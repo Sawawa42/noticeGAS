@@ -11,3 +11,5 @@ clientSecret 同SECRET
 postedCnt GAS実行後に保持するための変数  
 webhook Discordのwebhook
 
+## scrapbox
+https://scrapbox.io/42tokyo-42cursus/42API+GAS%E3%81%A7Discord%E3%81%AB%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E9%96%8B%E5%A7%8B%E6%99%82%E5%88%BB%E3%82%92%E6%8A%95%E3%81%92%E3%82%8B
