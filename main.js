@@ -1,5 +1,5 @@
 const develop = false;
-const noReviewNotice = true;
+const noReviewNotice = false;
 
 function main()
 {
