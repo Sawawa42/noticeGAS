@@ -1,9 +1,7 @@
-const develop = false;
 const noReviewNotice = false;
 
 function main()
 {
-  if (develop === true) return ;
   try {
     outputAuthUrl();
 
@@ -13,7 +11,7 @@ function main()
     }
     let message = createMessage_(userData[1]);
     if (message[0] !== "OK") {
-      throw Error();
+      throw new Error(message[1]);
     } else if (message[1] === "") {
       Logger.log("Nothing.");
       return ;
@@ -30,7 +28,8 @@ function main()
     }
 
   } catch(error) {
-    postDiscordMessage_("レビュー時間通知bot", error);
+    Logger.log(error);
+    postDiscordMessage_("レビュー時間通知bot", "エラー");
     return ;
   }
 }

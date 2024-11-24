@@ -16,12 +16,12 @@ function getScaleTeams_()
     return ["OK", JSON.parse(res.getContentText())];
   } catch(error) {
     Logger.log(error);
-    return ["Error", ""];
+    return ["Error", []];
   }
 }
 
 function testGetData() {
   let res = getScaleTeams_();
-  Logger.log(res[0]);
-  Logger.log(res[1]);
+  Logger.log(res[1][0]['begin_at']);
+  Logger.log(res[1][0]['correcteds'][0]['login']);
 }
