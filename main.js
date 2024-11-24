@@ -7,7 +7,7 @@ function main()
   try {
     outputAuthUrl();
 
-    let userData = get42UserDataJSON_();
+    let userData = getScaleTeams_();
     if (userData[0] !== "OK") {
       throw Error();
     }
@@ -15,6 +15,7 @@ function main()
     if (message[0] !== "OK") {
       throw Error();
     } else if (message[1] === "") {
+      Logger.log("Nothing.");
       return ;
     }
     Logger.log(message[1]);
@@ -27,10 +28,9 @@ function main()
     } else {
       Logger.log(res[1] + " Error: " + res[2]);
     }
-    // var cnt = extractBeginAt_(userData[1]);
-    // Logger.log(cnt);
 
   } catch(error) {
+    postDiscordMessage_("レビュー時間通知bot", error);
     return ;
   }
 }
