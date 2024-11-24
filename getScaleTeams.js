@@ -1,4 +1,4 @@
-function get42UserDataJSON_()
+function getScaleTeams_()
 {
   try {
     let accesstoken = service.getAccessToken();
@@ -11,12 +11,17 @@ function get42UserDataJSON_()
     };
     let res = UrlFetchApp.fetch(apiUrl, options);
     if (res.getResponseCode() < 200 || 300 <= res.getResponseCode()) {
-      throw new Error("Error: Failed UrlFetchApp.fetch in get42UserDataJSON_");
+      throw new Error("Error: Failed UrlFetchApp.fetch in getScaleTeams_");
     }
-    let json = JSON.parse(res);
-    return ["OK", json];
+    return ["OK", JSON.parse(res.getContentText())];
   } catch(error) {
     Logger.log(error);
-    return ["Error", {}];
+    return ["Error", []];
   }
+}
+
+function testGetData() {
+  let res = getScaleTeams_();
+  Logger.log(res[1][0]['begin_at']);
+  Logger.log(res[1][0]['correcteds'][0]['login']);
 }

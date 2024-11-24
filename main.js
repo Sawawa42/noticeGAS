@@ -1,20 +1,19 @@
-const develop = false;
 const noReviewNotice = false;
 
 function main()
 {
-  if (develop === true) return ;
   try {
     outputAuthUrl();
 
-    let userData = get42UserDataJSON_();
+    let userData = getScaleTeams_();
     if (userData[0] !== "OK") {
       throw Error();
     }
     let message = createMessage_(userData[1]);
     if (message[0] !== "OK") {
-      throw Error();
+      throw new Error(message[1]);
     } else if (message[1] === "") {
+      Logger.log("Nothing.");
       return ;
     }
     Logger.log(message[1]);
@@ -27,10 +26,10 @@ function main()
     } else {
       Logger.log(res[1] + " Error: " + res[2]);
     }
-    // var cnt = extractBeginAt_(userData[1]);
-    // Logger.log(cnt);
 
   } catch(error) {
+    Logger.log(error);
+    postDiscordMessage_("レビュー時間通知bot", "エラー");
     return ;
   }
 }
